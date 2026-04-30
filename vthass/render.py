@@ -746,7 +746,7 @@ class Renderer:
 
                 self.clearInput()
             else:
-                self.displayError(f"F|rst}r ej.")
+                self.displayError(f"F|rst\}r ej.")
         else:
             if len(self.input) < (self.terminal.columns - 1):
                 # If we got some unprintable character, ignore it.
