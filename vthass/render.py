@@ -566,7 +566,7 @@ class Renderer:
             return
 
         self.terminal.sendCommand(Terminal.SAVE_CURSOR)
-        self.terminal.moveCursor(self.terminal.rows - 1, 1)
+        self.terminal.moveCursor(self.terminal.rows, 40)
         self.terminal.sendCommand(Terminal.CLEAR_LINE)
         self.terminal.sendCommand(Terminal.SET_NORMAL)
         self.terminal.sendCommand(Terminal.SET_BOLD)
@@ -746,7 +746,8 @@ class Renderer:
 
                 self.clearInput()
             else:
-                self.displayError(f"Unrecognized command {actual}")
+                self.displayError(f"F|rst}r ej.")
+                self.clearInput()
         else:
             if len(self.input) < (self.terminal.columns - 1):
                 # If we got some unprintable character, ignore it.
