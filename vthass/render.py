@@ -513,7 +513,7 @@ class Renderer:
 
         if allDirty:
             # Need to wipe each row.
-            for row in range(maxDrawnRow + 1, self.terminal.rows - 2):
+            for row in range(maxDrawnRow + 1, self.terminal.rows):
                 self.terminal.moveCursor(row, 1)
                 self.terminal.sendCommand(Terminal.CLEAR_LINE)
 
@@ -720,7 +720,6 @@ class Renderer:
 
                     self.terminal.sendCommand(Terminal.SAVE_CURSOR)
                     self.__renderTabs()
-                    self.__draw()
                     self.terminal.sendCommand(Terminal.RESTORE_CURSOR)
 
                 self.clearInput()
