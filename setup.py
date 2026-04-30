@@ -2,10 +2,10 @@ from distutils.core import setup
 
 
 setup(
-    name="homeassistant-vt100",
+    name="husassistent-800",
     version="1.1.0",
-    description="VT-100 Home Assistant Frontend",
-    author="DragonMinded",
+    description="Husassistent 800 VT100",
+    author="DragonMinded, modified by Mater242",
     license="Public Domain",
     packages=[
         "vthass",
@@ -16,7 +16,7 @@ setup(
     python_requires=">3.8",
     entry_points={
         "console_scripts": [
-            "homeassistant-vt100 = vthass.__main__:cli",
+            "husassistent-800 = vthass.__main__:cli",
         ],
     },
 )
