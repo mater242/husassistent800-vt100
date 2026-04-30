@@ -566,7 +566,7 @@ class Renderer:
             return
 
         self.terminal.sendCommand(Terminal.SAVE_CURSOR)
-        self.terminal.moveCursor(self.terminal.rows, 40)
+        self.terminal.moveCursor(0, 60)
         self.terminal.sendCommand(Terminal.CLEAR_LINE)
         self.terminal.sendCommand(Terminal.SET_NORMAL)
         self.terminal.sendCommand(Terminal.SET_BOLD)
