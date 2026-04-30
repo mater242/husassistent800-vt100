@@ -122,7 +122,7 @@ class HorizontalRuleObject(Object):
         return True
 
     def render(self, terminal: Terminal, width: int) -> None:
-        terminal.sendText("\u2500" * width)
+        terminal.sendText("-" * width)
 
     def calculate(self, terminal: Terminal, width: int) -> int:
         return 1
@@ -413,9 +413,9 @@ class Renderer:
             self.terminal.sendCommand(Terminal.SET_NORMAL)
 
             self.terminal.moveCursor(2, 1)
-            self.terminal.sendText("\u2500" * self.terminal.columns)
+            self.terminal.sendText("-" * self.terminal.columns)
             self.terminal.moveCursor(4, 1)
-            self.terminal.sendText("\u2500" * self.terminal.columns)
+            self.terminal.sendText("-" * self.terminal.columns)
 
             self.__renderTabs()
 
@@ -665,7 +665,7 @@ class Renderer:
 
                 return None
 
-            if actual == "exit":
+            if actual == "avsluta":
                 return ExitAction()
             elif actual == "set" or actual.startswith("set "):
                 if " " not in actual:
@@ -683,9 +683,9 @@ class Renderer:
                         value = None
 
                     return SettingAction(setting, value)
-            elif actual == "toggle" or actual.startswith("toggle "):
+            elif actual == "aktivera" or actual.startswith("aktivera "):
                 if " " not in actual:
-                    self.displayError("No switch specified!")
+                    self.displayError("FEL: Ange en brytare!")
                 else:
                     _, setting = actual.split(" ", 1)
                     setting = setting.strip().lower()
@@ -712,9 +712,9 @@ class Renderer:
                             self.clearError()
                             self.clearInput()
                         else:
-                            self.displayError("Unrecognized switch!")
+                            self.displayError("Ok{nd brytare!")
                 return None
-            elif actual in {"n", "next"}:
+            elif actual in {"f", "fram}t"}:
                 if self.currentPage < (len(self.pages) - 1):
                     self.currentPage += 1
 
@@ -725,7 +725,7 @@ class Renderer:
                 self.clearInput()
 
                 return None
-            elif actual in {"p", "prev", "previous"}:
+            elif actual in {"b", "bak}t"}:
                 if self.currentPage > 0:
                     self.currentPage -= 1
 
@@ -736,7 +736,7 @@ class Renderer:
                 self.clearInput()
 
                 return None
-            elif actual == "help" and self.help_enabled:
+            elif actual == "hj{lp" and self.help_enabled:
                 if self.currentPage != (len(self.pages) - 1):
                     self.currentPage = len(self.pages) - 1
 
