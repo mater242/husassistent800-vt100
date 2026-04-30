@@ -566,7 +566,7 @@ class Renderer:
             return
 
         self.terminal.sendCommand(Terminal.SAVE_CURSOR)
-        self.terminal.moveCursor(0, 60)
+        self.terminal.moveCursor(self.terminal.rows, 40)
         self.terminal.sendCommand(Terminal.CLEAR_LINE)
         self.terminal.sendCommand(Terminal.SET_NORMAL)
         self.terminal.sendCommand(Terminal.SET_BOLD)
@@ -669,7 +669,7 @@ class Renderer:
                 return ExitAction()
             elif actual == "set" or actual.startswith("set "):
                 if " " not in actual:
-                    self.displayError("No setting requested!")
+                    #self.displayError("No setting requested!")
                 else:
                     _, setting = actual.split(" ", 1)
                     setting = setting.strip()
@@ -685,7 +685,7 @@ class Renderer:
                     return SettingAction(setting, value)
             elif actual == "aktivera" or actual.startswith("aktivera "):
                 if " " not in actual:
-                    self.displayError("Ange en brytare!")
+                    # self.displayError("Ange en brytare!")
                 else:
                     _, setting = actual.split(" ", 1)
                     setting = setting.strip().lower()
@@ -711,8 +711,8 @@ class Renderer:
                             objs[0].toggle()
                             self.clearError()
                             self.clearInput()
-                        else:
-                            self.displayError("Ok{{nd brytare!")
+                        #else:
+                            # self.displayError("Ok{{nd brytare!")
                 return None
             elif actual in {"f", "fram}t"}:
                 if self.currentPage < (len(self.pages) - 1):
@@ -746,7 +746,7 @@ class Renderer:
 
                 self.clearInput()
             else:
-                self.displayError(f"F|rst}}r ej.")
+                # self.displayError(f"F|rst}}r ej.")
         else:
             if len(self.input) < (self.terminal.columns - 1):
                 # If we got some unprintable character, ignore it.
