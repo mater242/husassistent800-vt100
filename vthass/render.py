@@ -720,6 +720,7 @@ class Renderer:
 
                     self.terminal.sendCommand(Terminal.SAVE_CURSOR)
                     self.__renderTabs()
+                    self.__draw()
                     self.terminal.sendCommand(Terminal.RESTORE_CURSOR)
 
                 self.clearInput()
