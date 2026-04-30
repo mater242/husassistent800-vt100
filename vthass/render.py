@@ -712,7 +712,7 @@ class Renderer:
                             self.clearError()
                             self.clearInput()
                         else:
-                            self.displayError("Ok{nd brytare!")
+                            self.displayError("Ok{{nd brytare!")
                 return None
             elif actual in {"f", "fram}t"}:
                 if self.currentPage < (len(self.pages) - 1):
@@ -746,7 +746,7 @@ class Renderer:
 
                 self.clearInput()
             else:
-                self.displayError(f"F|rst\}r ej.")
+                self.displayError(f"F|rst}}r ej.")
         else:
             if len(self.input) < (self.terminal.columns - 1):
                 # If we got some unprintable character, ignore it.
