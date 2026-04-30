@@ -685,7 +685,7 @@ class Renderer:
                     return SettingAction(setting, value)
             elif actual == "aktivera" or actual.startswith("aktivera "):
                 if " " not in actual:
-                    self.displayError("FEL: Ange en brytare!")
+                    self.displayError("Ange en brytare!")
                 else:
                     _, setting = actual.split(" ", 1)
                     setting = setting.strip().lower()
@@ -747,7 +747,6 @@ class Renderer:
                 self.clearInput()
             else:
                 self.displayError(f"F|rst}r ej.")
-                self.clearInput()
         else:
             if len(self.input) < (self.terminal.columns - 1):
                 # If we got some unprintable character, ignore it.
