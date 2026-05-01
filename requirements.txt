@@ -1,4 +1,4 @@
-vtpy @ git+https://github.com/DragonMinded/vtpy.git
+vtpy @ git+https://github.com/mater242/vtpy_abc800.git
 requests
 pyyaml
 flask
