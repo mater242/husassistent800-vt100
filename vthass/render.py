@@ -122,8 +122,8 @@ class HorizontalRuleObject(Object):
         return True
 
     def render(self, terminal: Terminal, width: int) -> None:
-        # Send line in ABC80X graphics mode:
-        terminal.sendText(chr(129) + "," * (width - 1))
+        # Line for ABC80X:
+        terminal.sendText("_" * width)
 
     def calculate(self, terminal: Terminal, width: int) -> int:
         return 1
@@ -414,9 +414,9 @@ class Renderer:
             self.terminal.sendCommand(Terminal.SET_NORMAL)
 
             self.terminal.moveCursor(2, 1)
-            self.terminal.sendText(chr(129) + "," * (self.terminal.columns - 1))
+            self.terminal.sendText("_" * self.terminal.columns)
             self.terminal.moveCursor(4, 1)
-            self.terminal.sendText(chr(129) + "," * (self.terminal.columns - 1))
+            self.terminal.sendText("_" * self.terminal.columns)
 
             self.__renderTabs()
 
@@ -444,7 +444,7 @@ class Renderer:
             if index == self.currentPage:
                 self.terminal.sendCommand(Terminal.SET_BOLD)
 
-            self.terminal.sendText(f" {page.name} ")
+            self.terminal.sendText(f"⌂{page.name}⌂")
 
         # Now, render the entries themselves, treating them all as dirty.
         self.__renderPage(True)
