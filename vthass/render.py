@@ -122,7 +122,8 @@ class HorizontalRuleObject(Object):
         return True
 
     def render(self, terminal: Terminal, width: int) -> None:
-        terminal.sendText("-" * width)
+        # Send line in ABC80X graphics mode:
+        terminal.sendText(chr(127) + "," * width - 1)
 
     def calculate(self, terminal: Terminal, width: int) -> int:
         return 1
@@ -220,7 +221,7 @@ class SwitchObject(Object):
         state = (
             "UNK"
             if self.entity.state is None
-            else ("ON " if self.entity.state else "OFF")
+            else ("TILL  " if self.entity.state else "FR]N")
         )
 
         terminal.sendCommand(Terminal.SET_NORMAL)
