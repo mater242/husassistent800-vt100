@@ -714,7 +714,7 @@ class Renderer:
                         else:
                             self.displayError("Ok{{nd brytare!")
                 return None
-            elif actual in {"f", "fram}t"}:
+            elif actual in {"N", "n", "n{sta"}:
                 if self.currentPage < (len(self.pages) - 1):
                     self.currentPage += 1
 
@@ -725,7 +725,7 @@ class Renderer:
                 self.clearInput()
 
                 return None
-            elif actual in {"b", "bak}t"}:
+            elif actual in {"B", "b", "bak}t"}:
                 if self.currentPage > 0:
                     self.currentPage -= 1
 
