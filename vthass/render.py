@@ -443,9 +443,10 @@ class Renderer:
             self.terminal.sendCommand(Terminal.SET_REVERSE)
             if index == self.currentPage:
                 self.terminal.sendCommand(Terminal.SET_BOLD)
-            # Encode name for inverted text (ABC80X):    
-            encodedName = ''.join(chr(ord(ch) + 127) for ch in page.name)
-            self.terminal.sendText(f" {encodedName} ")
+            else:
+                # Encode name for inverted text (ABC80X):    
+                encodedName = ''.join(chr(ord(ch) + 127) for ch in page.name)
+                self.terminal.sendBytes(f" {encodedName} ")
 
         # Now, render the entries themselves, treating them all as dirty.
         self.__renderPage(True)
