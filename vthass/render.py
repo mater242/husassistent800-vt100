@@ -123,7 +123,7 @@ class HorizontalRuleObject(Object):
 
     def render(self, terminal: Terminal, width: int) -> None:
         # Line for ABC80X:
-        terminal.sendText("_" * width)
+        terminal.sendText("-" * width)
 
     def calculate(self, terminal: Terminal, width: int) -> int:
         return 1
@@ -414,9 +414,9 @@ class Renderer:
             self.terminal.sendCommand(Terminal.SET_NORMAL)
 
             self.terminal.moveCursor(2, 1)
-            self.terminal.sendText("_" * self.terminal.columns)
+            self.terminal.sendText("-" * self.terminal.columns)
             self.terminal.moveCursor(4, 1)
-            self.terminal.sendText("_" * self.terminal.columns)
+            self.terminal.sendText("-" * self.terminal.columns)
 
             self.__renderTabs()
 
