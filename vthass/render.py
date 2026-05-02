@@ -440,13 +440,12 @@ class Renderer:
                 self.terminal.sendText(" ")
             spaced = True
 
-            self.terminal.sendCommand(Terminal.SET_REVERSE)
-            if index == self.currentPage:
-                self.terminal.sendCommand(Terminal.SET_BOLD)
-            else:
-                # Encode name for inverted text (ABC80X):    
-                encodedName = ''.join(chr(ord(ch) + 127) for ch in page.name)
-                self.terminal.sendBytes(b" " + encodedName + b" ")
+        self.terminal.sendCommand(Terminal.SET_REVERSE)
+        if index == self.currentPage:
+            self.terminal.sendCommand(Terminal.SET_BOLD)
+        
+        encodedName = bytes((ord(ch) + 127) & 0xFF for ch in page.name)
+        self.terminal.sendBytes(b" " + encodedName + b" ")
 
         # Now, render the entries themselves, treating them all as dirty.
         self.__renderPage(True)
